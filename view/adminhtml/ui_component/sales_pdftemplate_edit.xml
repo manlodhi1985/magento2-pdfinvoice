@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">sales_pdftemplate_edit.sales_pdftemplate_edit_data_source</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="childrenFromMeta" xsi:type="boolean">true</item>
+    </argument>
+    <settings>
+        <namespace>sales_pdftemplate_edit</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>sales_pdftemplate_edit.sales_pdftemplate_edit_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="sales_pdftemplate_edit_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="sales/pdftemplate/save"/>
+        </settings>
+        <dataProvider class="Bhavin\PdfInvoice\Ui\DataProvider\Pdftemplate\Form\PdftemplateDataProvider" name="sales_pdftemplate_edit_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="base_fieldset" sortOrder="10">
+        <settings>
+            <collapsible>false</collapsible>
+            <label translate="true">General</label>
+        </settings>
+         <field name="id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">pdftemplate</item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="status" component="Magento_Ui/js/form/element/single-checkbox" sortOrder="10" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">pdftemplate</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Status</label>
+                <dataScope>status</dataScope>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <options class="Magento\Config\Model\Config\Source\Yesno"/>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="store_id">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Cms\Ui\Component\Listing\Column\Cms\Options</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Store View</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">block</item>
+                    <item name="dataScope" xsi:type="string">store_id</item>
+                    <item name="default" xsi:type="string">0</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="name" sortOrder="20">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Template Name</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">pdftemplate</item>
+                    <item name="dataScope" xsi:type="string">name</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="design_fieldset" sortOrder="20">
+        <settings>
+            <collapsible>true</collapsible>
+            <label translate="true">Design</label>
+        </settings>
+        <field name="header" sortOrder="10">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">textarea</item>
+                    <item name="formElement" xsi:type="string">wysiwyg</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="required" xsi:type="boolean">true</item>
+                    <item name="label" xsi:type="string">Header</item>
+                    <item name="code" xsi:type="string">header</item>
+                    <item name="dataScope" xsi:type="string">template_data.header</item>
+                    <item name="source" xsi:type="string">pdftemplate</item>
+                    <item name="sortOrder" xsi:type="number">0</item>
+                    <item name="componentType" xsi:type="string">field</item>
+                    <item name="wysiwyg" xsi:type="boolean">true</item>
+                    <item name="wysiwygConfigData" xsi:type="array">
+                        <item name="add_variables" xsi:type="boolean">true</item>
+                        <item name="add_widgets" xsi:type="boolean">false</item>
+                        <item name="add_directives" xsi:type="boolean">true</item>
+                        <item name="use_container" xsi:type="boolean">true</item>
+                        <item name="container_class" xsi:type="string">hor-scroll</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="body" sortOrder="10">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">textarea</item>
+                    <item name="formElement" xsi:type="string">wysiwyg</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="required" xsi:type="boolean">true</item>
+                    <item name="label" xsi:type="string">Body Content</item>
+                    <item name="code" xsi:type="string">body</item>
+                    <item name="dataScope" xsi:type="string">template_data.body</item>
+                    <item name="source" xsi:type="string">pdftemplate</item>
+                    <item name="sortOrder" xsi:type="number">0</item>
+                    <item name="componentType" xsi:type="string">field</item>
+                    <item name="wysiwyg" xsi:type="boolean">true</item>
+                    <item name="wysiwygConfigData" xsi:type="array">
+                        <item name="add_variables" xsi:type="boolean">true</item>
+                        <item name="add_widgets" xsi:type="boolean">false</item>
+                        <item name="add_directives" xsi:type="boolean">true</item>
+                        <item name="use_container" xsi:type="boolean">true</item>
+                        <item name="container_class" xsi:type="string">hor-scroll</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="footer" sortOrder="10">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">textarea</item>
+                    <item name="formElement" xsi:type="string">wysiwyg</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="required" xsi:type="boolean">true</item>
+                    <item name="label" xsi:type="string">Footer</item>
+                    <item name="code" xsi:type="string">footer</item>
+                    <item name="dataScope" xsi:type="string">template_data.footer</item>
+                    <item name="source" xsi:type="string">pdftemplate</item>
+                    <item name="sortOrder" xsi:type="number">0</item>
+                    <item name="componentType" xsi:type="string">field</item>
+                    <item name="wysiwyg" xsi:type="boolean">true</item>
+                    <item name="wysiwygConfigData" xsi:type="array">
+                        <item name="add_variables" xsi:type="boolean">true</item>
+                        <item name="add_widgets" xsi:type="boolean">false</item>
+                        <item name="add_directives" xsi:type="boolean">true</item>
+                        <item name="use_container" xsi:type="boolean">true</item>
+                        <item name="container_class" xsi:type="string">hor-scroll</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="css" sortOrder="30" >
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Template Css</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="source" xsi:type="string">pdftemplate</item>
+                    <item name="dataScope" xsi:type="string">template_data.css</item>
+                    <item name="default" xsi:type="string"></item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="setting_fieldset" sortOrder="30">
+        <settings>
+            <collapsible>true</collapsible>
+            <label translate="true">Setting</label>
+        </settings> 
+        <field name="template_file_name" sortOrder="10" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Template File Name</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">pdftemplate</item>
+                    <item name="dataScope" xsi:type="string">template_data.template_file_name</item>
+                    <item name="default" xsi:type="string">invoice {{var invoice.increment_id}}</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="paper_orientation" sortOrder="20">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Bhavin\PdfInvoice\Model\Source\Orientation</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Paper Orientation</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">pdftemplate</item>
+                    <item name="dataScope" xsi:type="string">template_data.paper_orientation</item>
+                    <item name="default" xsi:type="string">0</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="paper_size" sortOrder="30" >
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Bhavin\PdfInvoice\Model\Source\PaperSize</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Paper Size</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">pdftemplate</item>
+                    <item name="dataScope" xsi:type="string">template_data.paper_size</item>
+                    <item name="default" xsi:type="string">0</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="margin_top" sortOrder="40" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Margin  Top</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">pdftemplate</item>
+                    <item name="dataScope" xsi:type="string">template_data.margin_top</item>
+                    <item name="default" xsi:type="string">10</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="margin_bottom" sortOrder="50" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Margin Bottom</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">pdftemplate</item>
+                    <item name="dataScope" xsi:type="string">template_data.margin_bottom</item>
+                    <item name="default" xsi:type="string">10</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="margin_left" sortOrder="60" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Margin Left</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">pdftemplate</item>
+                    <item name="dataScope" xsi:type="string">template_data.margin_left</item>
+                    <item name="default" xsi:type="string">15</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="margin_right" sortOrder="70" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Margin  Right</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">pdftemplate</item>
+                    <item name="dataScope" xsi:type="string">template_data.margin_right</item>
+                    <item name="default" xsi:type="string">15</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>
