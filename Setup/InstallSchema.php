@@ -46,8 +46,8 @@ class InstallSchema implements InstallSchemaInterface {
 			)
 			->addColumn(
 				'store_id',
-				\Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
-				1,
+				\Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+				255,
 				[],
 				'Store Id'
 			)

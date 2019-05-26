@@ -122,7 +122,7 @@
                     <item name="config" xsi:type="array">
                         <item name="type" xsi:type="string">delete</item>
                         <item name="label" xsi:type="string" translate="true">Delete</item>
-                        <item name="url" xsi:type="url" path="bhavin_pdfinvoice/pdftemplate/massDelete"/>
+                        <item name="url" xsi:type="url" path="sales/pdftemplate/massDelete"/>
                         <item name="confirm" xsi:type="array">
                             <item name="title" xsi:type="string" translate="true">Delete Pdftemplate</item>
                             <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete selected Pdftemplate?</item>

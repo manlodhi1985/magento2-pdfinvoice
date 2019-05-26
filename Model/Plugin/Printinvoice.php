@@ -73,11 +73,12 @@ class Printinvoice {
 		$pdftemplateFactory = $this->_pdftemplateFactory->create();
 
 		$collection = $pdftemplateFactory->getCollection();
-		$collection->addFieldToFilter('store_id', array("in", array($invoiceStore, 0)));
-		$collection->addFieldToFilter('status', Status::STATUS_ENABLED);
+		$collection->addFieldToFilter('store_id', [["finset" => $invoiceStore], ["finset" => 0]])
+			->addFieldToFilter('status', Status::STATUS_ENABLED)
+			->setOrder('updated_at', 'DESC');
 		$lastItem = $collection->getLastItem();
-
-		if (empty($lastItem->getId())) {
+		$lastItem->getId();
+		if (!$lastItem->getId()) {
 			return $result;
 		}
 

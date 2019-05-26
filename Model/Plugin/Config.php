@@ -14,10 +14,10 @@ class Config {
 	 */
 	public function __construct(
 		\Magento\Backend\Model\UrlInterface $url,
-		\Magento\Framework\Registry $registry
+		\Magento\Framework\App\RequestInterface $request
 	) {
 		$this->_url = $url;
-		$this->registry = $registry;
+		$this->request = $request;
 	}
 
 	/**
@@ -26,7 +26,7 @@ class Config {
 	 * @return string
 	 */
 	public function afterGetVariablesWysiwygActionUrl($subject, $result) {
-		if ($this->registry->registry('bhavin_pdftemplate')) {
+		if ($this->request->getFullActionName() == "sales_pdftemplate_edit") {
 			return $this->getUrl();
 		}
 

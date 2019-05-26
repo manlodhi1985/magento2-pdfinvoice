@@ -76,7 +76,7 @@
                 </checkbox>
             </formElements>
         </field>
-        <field name="store_id">
+        <!-- <field name="store_id">
             <argument name="data" xsi:type="array">
                 <item name="options" xsi:type="object">Magento\Cms\Ui\Component\Listing\Column\Cms\Options</item>
                 <item name="config" xsi:type="array">
@@ -91,6 +91,30 @@
                     </item>
                 </item>
             </argument>
+        </field> -->
+
+        <field name="storeviews" formElement="multiselect">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">block</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>int</dataType>
+                <label translate="true">Store View</label>
+                <dataScope>store_id</dataScope>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Magento\Cms\Ui\Component\Listing\Column\Cms\Options"/>
+                    </settings>
+                </multiselect>
+            </formElements>
         </field>
         <field name="name" sortOrder="20">
             <argument name="data" xsi:type="array">
@@ -107,12 +131,12 @@
             </argument>
         </field>
     </fieldset>
-    <fieldset name="design_fieldset" sortOrder="20">
+    <fieldset name="design_header_fieldset" sortOrder="20">
         <settings>
             <collapsible>true</collapsible>
-            <label translate="true">Design</label>
+            <label translate="true">Header</label>
         </settings>
-        <field name="header" sortOrder="10">
+        <!-- <field name="header" sortOrder="10">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">textarea</item>
@@ -135,56 +159,99 @@
                     </item>
                 </item>
             </argument>
-        </field>
-        <field name="body" sortOrder="10">
+        </field> -->
+        <field name="header" formElement="wysiwyg">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">textarea</item>
-                    <item name="formElement" xsi:type="string">wysiwyg</item>
-                    <item name="visible" xsi:type="boolean">true</item>
-                    <item name="required" xsi:type="boolean">true</item>
-                    <item name="label" xsi:type="string">Body Content</item>
-                    <item name="code" xsi:type="string">body</item>
-                    <item name="dataScope" xsi:type="string">template_data.body</item>
-                    <item name="source" xsi:type="string">pdftemplate</item>
-                    <item name="sortOrder" xsi:type="number">0</item>
-                    <item name="componentType" xsi:type="string">field</item>
-                    <item name="wysiwyg" xsi:type="boolean">true</item>
-                    <item name="wysiwygConfigData" xsi:type="array">
-                        <item name="add_variables" xsi:type="boolean">true</item>
-                        <item name="add_widgets" xsi:type="boolean">false</item>
-                        <item name="add_directives" xsi:type="boolean">true</item>
-                        <item name="use_container" xsi:type="boolean">true</item>
-                        <item name="container_class" xsi:type="string">hor-scroll</item>
-                    </item>
+                    <item name="source" xsi:type="string">block</item>
                 </item>
             </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="admin__field-wide">true</class>
+                </additionalClasses>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <label/>
+                <dataScope>template_data.header</dataScope>
+            </settings>
+            <formElements>
+                <wysiwyg>
+                    <settings>
+                        <wysiwyg>true</wysiwyg>
+                    </settings>
+                </wysiwyg>
+            </formElements>
         </field>
-        <field name="footer" sortOrder="10">
+    </fieldset>
+    <fieldset name="design_body_fieldset" sortOrder="30">
+        <settings>
+            <collapsible>true</collapsible>
+            <label translate="true">Body</label>
+        </settings>
+        <field name="body" formElement="wysiwyg">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">textarea</item>
-                    <item name="formElement" xsi:type="string">wysiwyg</item>
-                    <item name="visible" xsi:type="boolean">true</item>
-                    <item name="required" xsi:type="boolean">true</item>
-                    <item name="label" xsi:type="string">Footer</item>
-                    <item name="code" xsi:type="string">footer</item>
-                    <item name="dataScope" xsi:type="string">template_data.footer</item>
-                    <item name="source" xsi:type="string">pdftemplate</item>
-                    <item name="sortOrder" xsi:type="number">0</item>
-                    <item name="componentType" xsi:type="string">field</item>
-                    <item name="wysiwyg" xsi:type="boolean">true</item>
-                    <item name="wysiwygConfigData" xsi:type="array">
-                        <item name="add_variables" xsi:type="boolean">true</item>
-                        <item name="add_widgets" xsi:type="boolean">false</item>
-                        <item name="add_directives" xsi:type="boolean">true</item>
-                        <item name="use_container" xsi:type="boolean">true</item>
-                        <item name="container_class" xsi:type="string">hor-scroll</item>
-                    </item>
+                    <item name="source" xsi:type="string">block</item>
                 </item>
             </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="admin__field-wide">true</class>
+                </additionalClasses>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <label/>
+                <dataScope>template_data.body</dataScope>
+            </settings>
+            <formElements>
+                <wysiwyg>
+                    <settings>
+                        <wysiwyg>true</wysiwyg>
+                    </settings>
+                </wysiwyg>
+            </formElements>
         </field>
-        <field name="css" sortOrder="30" >
+    </fieldset>
+
+    <fieldset name="design_footer_fieldset" sortOrder="40">
+        <settings>
+            <collapsible>true</collapsible>
+            <label translate="true">Footer</label>
+        </settings>
+        <field name="footer" formElement="wysiwyg">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">block</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="admin__field-wide">true</class>
+                </additionalClasses>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <label/>
+                <dataScope>template_data.footer</dataScope>
+            </settings>
+            <formElements>
+                <wysiwyg>
+                    <settings>
+                        <wysiwyg>true</wysiwyg>
+                    </settings>
+                </wysiwyg>
+            </formElements>
+        </field>
+    </fieldset>
+    <fieldset name="design_css_fieldset" sortOrder="50">
+        <settings>
+            <collapsible>true</collapsible>
+            <label translate="true">Css Style</label>
+        </settings>
+        <field name="css" sortOrder="30" formElement="textarea">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
@@ -197,7 +264,7 @@
             </argument>
         </field>
     </fieldset>
-    <fieldset name="setting_fieldset" sortOrder="30">
+    <fieldset name="setting_fieldset" sortOrder="60">
         <settings>
             <collapsible>true</collapsible>
             <label translate="true">Setting</label>

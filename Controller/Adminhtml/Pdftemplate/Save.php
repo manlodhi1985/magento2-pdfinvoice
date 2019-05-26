@@ -28,7 +28,9 @@ class Save extends \Bhavin\PdfInvoice\Controller\Adminhtml\Pdftemplate {
 			if (!$data['id']) {
 				unset($data['id']);
 			}
-
+			if (isset($data['store_id']) && is_array($data['store_id'])) {
+				$data['store_id'] = implode(',', $data['store_id']);
+			}
 			$pdftemplate->setData($data);
 
 			$this->_eventManager->dispatch(
