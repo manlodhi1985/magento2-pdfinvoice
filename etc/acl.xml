@@ -12,18 +12,19 @@
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">
-                            <resource id="Mageants_PdfInvoice::mageants_pdfinvoice" title="PDF Invoice Section" sortOrder="50"></resource>
+                            <resource id="Bhavin_PdfInvoice::bhavin_pdfinvoice" title="PDF Invoice Section" sortOrder="50"></resource>
                         </resource>
                     </resource>
                 </resource>
                 <resource id="Magento_Sales::sales">
-					<resource id="Mageants_PdfInvoice::pdfinvoice" title="PDF Invoice Manage" translate="title" sortOrder="10">
-						<resource id="Mageants_PdfInvoice::pdftemplate" title="PDF Template" translate="title" sortOrder="20">					
-								<resource id="Mageants_PdfInvoice::pdftemplate_grid" title="PDF Template Grid" sortOrder="20" />
-								<resource id="Mageants_PdfInvoice::pdftemplate_new_edit" title="Create / Edit PDF Template" sortOrder="20" />
-								<resource id="Mageants_PdfInvoice::pdftemplate_save" title="Save PDF Template" sortOrder="20" />
-								<resource id="Mageants_PdfInvoice::pdftemplate_delete" title="Delete PDF Template" sortOrder="20" />
-								<resource id="Mageants_PdfInvoice::pdftemplate_massdelete" title="Mass Delete PDF Template" sortOrder="20" />
+					<resource id="Bhavin_PdfInvoice::pdfinvoice" title="PDF Invoice Manage" translate="title" sortOrder="10">
+						<resource id="Bhavin_PdfInvoice::pdftemplate" title="PDF Template" translate="title" sortOrder="20">					
+								<resource id="Bhavin_PdfInvoice::pdftemplate_grid" title="PDF Template Grid" sortOrder="20" />
+								<resource id="Bhavin_PdfInvoice::pdftemplate_new" title="Create / Edit PDF Template" sortOrder="20" />
+                                <resource id="Bhavin_PdfInvoice::pdftemplate_edit" title="Create / Edit PDF Template" sortOrder="20" />
+								<resource id="Bhavin_PdfInvoice::pdftemplate_save" title="Save PDF Template" sortOrder="20" />
+								<resource id="Bhavin_PdfInvoice::pdftemplate_delete" title="Delete PDF Template" sortOrder="20" />
+								<resource id="Bhavin_PdfInvoice::pdftemplate_massdelete" title="Mass Delete PDF Template" sortOrder="20" />
 						</resource>	
 					</resource>
 				</resource>

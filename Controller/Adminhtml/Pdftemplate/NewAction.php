@@ -13,7 +13,7 @@ class NewAction extends \Magento\Backend\App\Action {
 	 * Access Resource ID
 	 *
 	 */
-	const RESOURCE_ID = 'Bhavin_PdfInvoice::pdftemplate_new_edit';
+	const RESOURCE_ID = 'Bhavin_PdfInvoice::pdftemplate_new';
 	/**
 	 * Redirect result factory
 	 *
