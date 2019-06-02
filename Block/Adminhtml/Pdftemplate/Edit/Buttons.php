@@ -18,6 +18,12 @@ class Buttons extends \Magento\Backend\Block\Widget\Container {
 			],
 			'sort_order' => 90,
 		]);
+		$this->buttonList->add("back", [
+			'label' => __('Back'),
+			'onclick' => 'setLocation(\'' . $this->getUrl("*/*/index") . '\')',
+			'class' => 'back',
+			'sort_order' => 90,
+		]);
 		$this->buttonList->add("save_and_continue", [
 			'label' => __("Save and Continue Edit"),
 			'class' => "save primary bnt-primary",

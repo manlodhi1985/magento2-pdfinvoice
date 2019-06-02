@@ -134,7 +134,7 @@ class Printpdf extends Abstractpdf {
 
 		$date = $this->dateTime->date('Y-m-d_H-i-s');
 
-		$fileName = $pdfFileData['filename'] . $date . '.pdf';
+		$fileName = $pdfFileData['filename'] . "-" . $date . '.pdf';
 
 		return $this->fileFactory->create(
 			$fileName,

@@ -76,23 +76,6 @@
                 </checkbox>
             </formElements>
         </field>
-        <!-- <field name="store_id">
-            <argument name="data" xsi:type="array">
-                <item name="options" xsi:type="object">Magento\Cms\Ui\Component\Listing\Column\Cms\Options</item>
-                <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">int</item>
-                    <item name="label" xsi:type="string" translate="true">Store View</item>
-                    <item name="formElement" xsi:type="string">select</item>
-                    <item name="source" xsi:type="string">block</item>
-                    <item name="dataScope" xsi:type="string">store_id</item>
-                    <item name="default" xsi:type="string">0</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
-                </item>
-            </argument>
-        </field> -->
-
         <field name="storeviews" formElement="multiselect">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -164,6 +147,10 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">block</item>
+                    <item name="wysiwygConfigData" xsi:type="array">
+                        <item name="add_widgets" xsi:type="boolean">false</item>
+                        <item name="container_class" xsi:type="string">hor-scroll</item>
+                    </item>
                 </item>
             </argument>
             <settings>
@@ -194,6 +181,10 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">block</item>
+                    <item name="wysiwygConfigData" xsi:type="array">
+                        <item name="add_widgets" xsi:type="boolean">false</item>
+                        <item name="container_class" xsi:type="string">hor-scroll</item>
+                    </item>
                 </item>
             </argument>
             <settings>
@@ -225,6 +216,10 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">block</item>
+                    <item name="wysiwygConfigData" xsi:type="array">
+                        <item name="add_widgets" xsi:type="boolean">false</item>
+                        <item name="container_class" xsi:type="string">hor-scroll</item>
+                    </item>
                 </item>
             </argument>
             <settings>

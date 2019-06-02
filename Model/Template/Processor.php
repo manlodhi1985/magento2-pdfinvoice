@@ -54,7 +54,7 @@ class Processor extends Template {
 	 * @return mixed
 	 */
 	public function getTemplateFileName() {
-		return $this->getPDFTemplate()->getFilename();
+		return $this->getPDFTemplate()->getTemplateFileName();
 	}
 
 	/**

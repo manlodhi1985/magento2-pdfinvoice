@@ -7,10 +7,11 @@ namespace Bhavin\PdfInvoice\Controller\Adminhtml\Pdftemplate;
 
 class Delete extends Bhavin\PdfInvoice\Controller\Adminhtml\Pdftemplate {
 	/**
-	 * Access Resource ID
+	 * Authorization level of a basic admin session
 	 *
+	 * @see _isAllowed()
 	 */
-	const RESOURCE_ID = 'Bhavin_PdfInvoice::pdftemplate_delete';
+	const ADMIN_RESOURCE = 'Bhavin_PdfInvoice::pdftemplate_delete';
 	/**
 	 * execute action
 	 *
@@ -69,12 +70,5 @@ class Delete extends Bhavin\PdfInvoice\Controller\Adminhtml\Pdftemplate {
 		$resultRedirect->setPath('bhavin_pdfinvoice/*/');
 
 		return $resultRedirect;
-	}
-
-	/*
-		 * Check permission via ACL resource
-	*/
-	protected function _isAllowed() {
-		return $this->_authorization->isAllowed(Self::RESOURCE_ID);
 	}
 }

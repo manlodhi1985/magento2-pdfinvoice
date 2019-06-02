@@ -11,10 +11,11 @@ use \Magento\Ui\Component\MassAction\Filter;
 
 class MassDelete extends \Magento\Backend\App\Action {
 	/**
-	 * Access Resource ID
+	 * Authorization level of a basic admin session
 	 *
+	 * @see _isAllowed()
 	 */
-	const RESOURCE_ID = 'Bhavin_PdfInvoice::pdftemplate_massdelete';
+	const ADMIN_RESOURCE = 'Bhavin_PdfInvoice::pdftemplate_massdelete';
 	/**
 	 * Mass Action Filter
 	 *
@@ -46,13 +47,6 @@ class MassDelete extends \Magento\Backend\App\Action {
 		$this->_collectionFactory = $collectionFactory;
 
 		parent::__construct($context);
-	}
-
-	/*
-		 * Check permission via ACL resource
-	*/
-	protected function _isAllowed() {
-		return $this->_authorization->isAllowed(Self::RESOURCE_ID);
 	}
 	/**
 	 * execute action

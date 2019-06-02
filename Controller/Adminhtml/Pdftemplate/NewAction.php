@@ -10,10 +10,11 @@ use \Magento\Backend\Model\View\Result\ForwardFactory;
 
 class NewAction extends \Magento\Backend\App\Action {
 	/**
-	 * Access Resource ID
+	 * Authorization level of a basic admin session
 	 *
+	 * @see _isAllowed()
 	 */
-	const RESOURCE_ID = 'Bhavin_PdfInvoice::pdftemplate_new';
+	const ADMIN_RESOURCE = 'Bhavin_PdfInvoice::pdftemplate_new';
 	/**
 	 * Redirect result factory
 	 *
@@ -34,13 +35,6 @@ class NewAction extends \Magento\Backend\App\Action {
 		$this->_resultForwardFactory = $resultForwardFactory;
 
 		parent::__construct($context);
-	}
-
-	/*
-		 * Check permission via ACL resource
-	*/
-	protected function _isAllowed() {
-		return $this->_authorization->isAllowed(Self::RESOURCE_ID);
 	}
 	/**
 	 * forward to edit
