@@ -45,8 +45,16 @@ class PdftemplateDataProvider extends AbstractDataProvider {
 		}
 		$items = $this->collection->getItems();
 		foreach ($items as $pdftemplate) {
-			$this->_loadedData[$pdftemplate->getId()] = $pdftemplate->getData();
-			$this->_loadedData[$pdftemplate->getId()]['template_data'] = json_decode($pdftemplate->getTemplateData(), true);
+			$this->_loadedData[$pdftemplate->getId()]['general'] = $pdftemplate->getData();
+			unset($this->_loadedData[$pdftemplate->getId()]['general']['template_data']);
+			$template_data = json_decode($pdftemplate->getTemplateData(), true);
+			$this->_loadedData[$pdftemplate->getId()]['design']['template_data']['body'] = $template_data['body'];
+			$this->_loadedData[$pdftemplate->getId()]['css']['template_data']['css'] = $template_data['css'];
+			$this->_loadedData[$pdftemplate->getId()]['setting']['template_data']['template_file_name'] = $template_data['template_file_name'];
+			$this->_loadedData[$pdftemplate->getId()]['setting']['template_data']['paper_orientation'] = $template_data['paper_orientation'];
+			$this->_loadedData[$pdftemplate->getId()]['setting']['template_data']['paper_size'] = $template_data['paper_size'];
+			$this->_loadedData[$pdftemplate->getId()]['setting']['template_data']['margin'] = $template_data['margin'];
+
 		}
 		return $this->_loadedData;
 	}

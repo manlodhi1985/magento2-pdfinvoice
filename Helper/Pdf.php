@@ -230,7 +230,6 @@ class Pdf extends AbstractHelper {
 		$pdf->SetHTMLHeader($parts['header']);
 		$pdf->SetHTMLFooter($parts['footer']);
 		$pdf->WriteHTML($templateModel->getCss(), 1);
-
 		$pdf->WriteHTML('<body>' . html_entity_decode($parts["body"]) . '</body>');
 		$pdfToOutput = $pdf->Output('', 'S');
 

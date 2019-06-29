@@ -105,7 +105,6 @@ class Processor extends Template {
 	 * @return array
 	 */
 	private function html($processor) {
-
 		$html = [
 			'body' => $this->processArea($processor, $this->getTemplateBody()),
 			'header' => $this->processArea($processor, $this->getTemplateHeader()),

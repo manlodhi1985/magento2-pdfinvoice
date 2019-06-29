@@ -5,7 +5,7 @@
  */
 namespace Bhavin\PdfInvoice\Controller\Adminhtml\Pdftemplate;
 
-class Delete extends Bhavin\PdfInvoice\Controller\Adminhtml\Pdftemplate {
+class Delete extends \Bhavin\PdfInvoice\Controller\Adminhtml\Pdftemplate {
 	/**
 	 * Authorization level of a basic admin session
 	 *

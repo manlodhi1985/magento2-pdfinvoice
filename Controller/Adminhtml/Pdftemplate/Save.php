@@ -21,10 +21,15 @@ class Save extends \Bhavin\PdfInvoice\Controller\Adminhtml\Pdftemplate {
 	 */
 	public function execute() {
 		$pdftemplate = $this->init();
-		$data = $this->getRequest()->getParams();
+		$dataPost = $this->getRequest()->getParams();
 		$resultRedirect = $this->resultRedirectFactory->create();
-		if ($data) {
+		if ($dataPost) {
+			$data = $dataPost['general'];
+			$template_data = $dataPost['design']['template_data'];
+			$template_data = array_merge($template_data, $dataPost['css']['template_data']);
+			$template_data = array_merge($template_data, $dataPost['setting']['template_data']);
 
+			$data['template_data'] = $template_data;
 			if (!$data['id']) {
 				unset($data['id']);
 			}
@@ -63,13 +68,10 @@ class Save extends \Bhavin\PdfInvoice\Controller\Adminhtml\Pdftemplate {
 				return $resultRedirect;
 
 			} catch (\Magento\Framework\Exception\LocalizedException $e) {
-				echo 2, $e->getMessage();exit;
 				$this->messageManager->addError($e->getMessage());
 			} catch (\RuntimeException $e) {
-				echo 2, $e->getMessage();exit;
 				$this->messageManager->addError($e->getMessage());
 			} catch (\Exception $e) {
-				echo 1, $e->getMessage();exit;
 				$this->messageManager->addException($e, __('Something went wrong while saving the Pdf Template.'));
 			}
 

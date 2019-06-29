@@ -10,12 +10,16 @@
         <item name="js_config" xsi:type="array">
             <item name="provider" xsi:type="string">sales_pdftemplate_edit.sales_pdftemplate_edit_data_source</item>
         </item>
-        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="label" xsi:type="string" translate="true">PDF Template Information</item>
         <item name="childrenFromMeta" xsi:type="boolean">true</item>
     </argument>
     <settings>
         <namespace>sales_pdftemplate_edit</namespace>
         <dataScope>data</dataScope>
+        <layout>
+              <navContainerName>left</navContainerName>
+              <type>tabs</type>
+        </layout>
         <deps>
             <dep>sales_pdftemplate_edit.sales_pdftemplate_edit_data_source</dep>
         </deps>
@@ -36,9 +40,9 @@
             </settings>
         </dataProvider>
     </dataSource>
-    <fieldset name="base_fieldset" sortOrder="10">
+    <fieldset name="general" sortOrder="10">
         <settings>
-            <collapsible>false</collapsible>
+            
             <label translate="true">General</label>
         </settings>
          <field name="id">
@@ -47,7 +51,7 @@
                     <item name="visible" xsi:type="boolean">false</item>
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">pdftemplate</item>
+                    <item name="source" xsi:type="string">basic</item>
                 </item>
             </argument>
         </field>
@@ -55,7 +59,7 @@
         <field name="status" component="Magento_Ui/js/form/element/single-checkbox" sortOrder="10" formElement="checkbox">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">pdftemplate</item>
+                    <item name="source" xsi:type="string">data</item>
                     <item name="default" xsi:type="number">0</item>
                 </item>
             </argument>
@@ -79,7 +83,7 @@
         <field name="storeviews" formElement="multiselect">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">block</item>
+                    <item name="source" xsi:type="string">data</item>
                     <item name="default" xsi:type="number">0</item>
                 </item>
             </argument>
@@ -105,7 +109,7 @@
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Template Name</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">pdftemplate</item>
+                    <item name="source" xsi:type="string">data</item>
                     <item name="dataScope" xsi:type="string">name</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>
@@ -114,46 +118,14 @@
             </argument>
         </field>
     </fieldset>
-    <fieldset name="design_header_fieldset" sortOrder="20">
+    <fieldset name="design" sortOrder="20">
         <settings>
-            <collapsible>true</collapsible>
-            <label translate="true">Header</label>
-        </settings>
-        <field name="header" formElement="wysiwyg">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">block</item>
-                    <item name="wysiwygConfigData" xsi:type="array">
-                        <item name="add_widgets" xsi:type="boolean">false</item>
-                        <item name="container_class" xsi:type="string">hor-scroll</item>
-                    </item>
-                </item>
-            </argument>
-            <settings>
-                <additionalClasses>
-                    <class name="admin__field-wide">true</class>
-                </additionalClasses>
-                <label/>
-                <dataScope>template_data.header</dataScope>
-            </settings>
-            <formElements>
-                <wysiwyg>
-                    <settings>
-                        <wysiwyg>true</wysiwyg>
-                    </settings>
-                </wysiwyg>
-            </formElements>
-        </field>
-    </fieldset>
-    <fieldset name="design_body_fieldset" sortOrder="30">
-        <settings>
-            <collapsible>true</collapsible>
-            <label translate="true">Body</label>
+            <label translate="true">Design</label>
         </settings>
         <field name="body" formElement="wysiwyg">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">block</item>
+                    <item name="source" xsi:type="string">data</item>
                     <item name="wysiwygConfigData" xsi:type="array">
                         <item name="add_widgets" xsi:type="boolean">false</item>
                         <item name="container_class" xsi:type="string">hor-scroll</item>
@@ -179,41 +151,9 @@
             </formElements>
         </field>
     </fieldset>
-
-    <fieldset name="design_footer_fieldset" sortOrder="40">
+    <fieldset name="css" sortOrder="50">
         <settings>
-            <collapsible>true</collapsible>
-            <label translate="true">Footer</label>
-        </settings>
-        <field name="footer" formElement="wysiwyg">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">block</item>
-                    <item name="wysiwygConfigData" xsi:type="array">
-                        <item name="add_widgets" xsi:type="boolean">false</item>
-                        <item name="container_class" xsi:type="string">hor-scroll</item>
-                    </item>
-                </item>
-            </argument>
-            <settings>
-                <additionalClasses>
-                    <class name="admin__field-wide">true</class>
-                </additionalClasses>
-                <label/>
-                <dataScope>template_data.footer</dataScope>
-            </settings>
-            <formElements>
-                <wysiwyg>
-                    <settings>
-                        <wysiwyg>true</wysiwyg>
-                    </settings>
-                </wysiwyg>
-            </formElements>
-        </field>
-    </fieldset>
-    <fieldset name="design_css_fieldset" sortOrder="50">
-        <settings>
-            <collapsible>true</collapsible>
+            
             <label translate="true">Css Style</label>
             <additionalClasses>
                 <class name="admin__field-wide">true</class>
@@ -223,7 +163,6 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Template Css</item>
                     <item name="formElement" xsi:type="string">textarea</item>
                     <item name="source" xsi:type="string">pdftemplate</item>
                     <item name="dataScope" xsi:type="string">template_data.css</item>
@@ -232,9 +171,9 @@
             </argument>
         </field>
     </fieldset>
-    <fieldset name="setting_fieldset" sortOrder="60">
+    <fieldset name="setting" sortOrder="60">
         <settings>
-            <collapsible>true</collapsible>
+            
             <label translate="true">Setting</label>
         </settings> 
         <field name="template_file_name" sortOrder="10" formElement="input">
@@ -285,60 +224,15 @@
                 </item>
             </argument>
         </field>
-        <field name="margin_top" sortOrder="40" formElement="input">
+        <field name="margin" sortOrder="40" formElement="input">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Margin  Top</item>
+                    <item name="label" xsi:type="string" translate="true">Margin  (Top, Left, Right, Bottom)</item>
                     <item name="formElement" xsi:type="string">input</item>
                     <item name="source" xsi:type="string">pdftemplate</item>
-                    <item name="dataScope" xsi:type="string">template_data.margin_top</item>
-                    <item name="default" xsi:type="string">10</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
-                </item>
-            </argument>
-        </field>
-        <field name="margin_bottom" sortOrder="50" formElement="input">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Margin Bottom</item>
-                    <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">pdftemplate</item>
-                    <item name="dataScope" xsi:type="string">template_data.margin_bottom</item>
-                    <item name="default" xsi:type="string">10</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
-                </item>
-            </argument>
-        </field>
-        <field name="margin_left" sortOrder="60" formElement="input">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Margin Left</item>
-                    <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">pdftemplate</item>
-                    <item name="dataScope" xsi:type="string">template_data.margin_left</item>
-                    <item name="default" xsi:type="string">15</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
-                </item>
-            </argument>
-        </field>
-        <field name="margin_right" sortOrder="70" formElement="input">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Margin  Right</item>
-                    <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">pdftemplate</item>
-                    <item name="dataScope" xsi:type="string">template_data.margin_right</item>
-                    <item name="default" xsi:type="string">15</item>
+                    <item name="dataScope" xsi:type="string">template_data.margin</item>
+                    <item name="default" xsi:type="string">10,15,15,10</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>
                     </item>
